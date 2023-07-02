@@ -20,8 +20,15 @@ html, body , #__nuxt{
   padding: 0;
 }
 
+html {
+  /* background: linear-gradient(to top, #bbb 0%, #eee 100%); */
+  color: #222;
+  background: #fff;
+}
+
 html.dark {
-  background: #222;
   color: white;
+  /* background: linear-gradient(to top, #111 0%, #222 100%); */
+  background: #222;
 }
 </style>
