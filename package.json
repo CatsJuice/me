@@ -1,4 +1,5 @@
 {
+  "name": "CatsJuice",
   "private": true,
   "packageManager": "pnpm@8.6.3",
   "scripts": {
