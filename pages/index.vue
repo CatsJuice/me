@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { codepen, github, twitter } from '../constants/social'
 
+const { register } = useCursor()
+
+onMounted(() => register())
+onBeforeUnmount(() => register())
+
 const socials = [
   {
     name: 'Github',
@@ -28,10 +33,13 @@ const socials = [
     <h1 display-none>
       Hi, I'm CatsJuice
     </h1>
-    <caption flex="~" items-center gap-2 text-left text-6 text-gray-500>
+    <div
+      data-cursor="text"
+      flex="~" items-center gap-2 text-left text-6 text-gray-500
+    >
       <div i-fluent-emoji:face-with-peeking-eye />
       I'm building this site.
-    </caption>
+    </div>
 
     <br>
     <br>
