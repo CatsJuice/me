@@ -104,7 +104,18 @@ async function typeSentence3() {
       </div>
     </div>
 
-    <div title-1>
+    <div title-1 flex="~" items-center>
+      <div
+        mr4
+        class="avatar"
+        data-cursor="rect"
+        data-cursor-style="--cursor-radius: 50%;--cursor-scale: 1.1;--cursor-blur-duration: 1.4s"
+      >
+        <img
+          src="/Catsjuice-Square.jpg"
+          h-12 w-12 rounded-full
+        >
+      </div>
       <div ref="$s1" inline />
     </div>
     <div title-2 font-500>
@@ -154,5 +165,12 @@ async function typeSentence3() {
   background-color: rgba(100, 100, 100, 0.1);
   border-radius: 0.25em;
   border: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.avatar img {
+  transition: all 0.2s cubic-bezier(.68,.09,.53,1.4);
+}
+.avatar:hover img {
+  transform: rotate(-5deg);
 }
 </style>
