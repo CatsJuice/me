@@ -112,7 +112,7 @@ async function typeSentence3() {
         data-cursor-style="--cursor-radius: 50%;--cursor-scale: 1.1;--cursor-blur-duration: 1.4s"
       >
         <img
-          src="/imgs/Catsjuice-Square.jpg"
+          src="/imgs/catsjuice-avatar.jpg"
           h-12 w-12 rounded-full
         >
       </div>
