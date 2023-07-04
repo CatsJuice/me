@@ -209,7 +209,17 @@ function registerRectNode(_node: Element) {
     updateStyle('--cursor-y', `${rect.top + rect.height / 2}px`)
     updateStyle('--cursor-width', `${rect.width}px`)
     updateStyle('--cursor-height', `${rect.height}px`)
-    updateStyle(rectStyle)
+
+    const styleToUpdate: any = { ...rectStyle }
+    const customStyleRaw = node.getAttribute('data-cursor-style')
+    if (customStyleRaw) {
+      customStyleRaw.split(';').forEach((style) => {
+        const [key, value] = style.split(':').map(s => s.trim())
+        styleToUpdate[key] = value
+      })
+    }
+
+    updateStyle(styleToUpdate)
 
     node.style.setProperty('transform', 'translate(var(--translateX), var(--translateY))')
   }
