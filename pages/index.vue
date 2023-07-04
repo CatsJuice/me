@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { codepen, github, twitter } from '../constants/social'
 
-const { register } = useCursor()
-
-onMounted(() => register())
-onBeforeUnmount(() => register())
+useCursor()
 
 const socials = [
   {
@@ -33,22 +30,17 @@ const socials = [
     <h1 display-none>
       Hi, I'm CatsJuice
     </h1>
-    <div
-      data-cursor="text"
-      flex="~" items-center gap-2 text-left text-6 text-gray-500
-    >
-      <div i-fluent-emoji:face-with-peeking-eye />
-      I'm building this site.
-    </div>
 
     <br>
     <br>
     <br>
 
-    <div flex="~" gap-2>
+    <div flex="~" gap-2 text-5>
       <a
         v-for="social in socials"
         :key="social.name"
+        p1
+        data-cursor="rect"
         :href="social.href"
       >
         <div :class="{ [social.icon]: true }" />

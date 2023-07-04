@@ -14,6 +14,11 @@ useHead({
 </template>
 
 <style>
+:root {
+  --bg: #fff;
+  --light-text: #222;
+}
+
 html, body , #__nuxt{
   height: 100vh;
   margin: 0;
@@ -21,14 +26,15 @@ html, body , #__nuxt{
 }
 
 html {
-  /* background: linear-gradient(to top, #bbb 0%, #eee 100%); */
-  color: #222;
-  background: #fff;
+  --bg: #fff;
+  --light-text: #222;
+
+  color: var(--text);
+  background: var(--bg);
 }
 
 html.dark {
-  color: white;
-  /* background: linear-gradient(to top, #111 0%, #222 100%); */
-  background: #222;
+  --text: #fff;
+  --bg: #222;
 }
 </style>
