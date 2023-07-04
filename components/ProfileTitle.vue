@@ -67,8 +67,8 @@ async function typeSentence3() {
     <div>
       <div ref="$s1h" hidden>
         <div>
-          <span data-cursor="text" inline-block>Hi, ^400I'm</span>
-          <div data-cursor="rect" ml2 inline-block px2>
+          <span data-cursor="text" inline-block text-nowrap>Hi, ^400I'm</span>
+          <div data-cursor="rect" ml2 inline-block px2 text-nowrap>
             <span class="catsjuice" inline-block>
               CatsJuice
             </span>
@@ -104,7 +104,7 @@ async function typeSentence3() {
       </div>
     </div>
 
-    <div title-1 flex="~" items-center>
+    <div title-1 flex="~ wrap" items-center>
       <div
         mr4
         class="avatar"
@@ -116,7 +116,7 @@ async function typeSentence3() {
           h-12 w-12 rounded-full
         >
       </div>
-      <div ref="$s1" inline />
+      <div ref="$s1" inline-flex flex="nowrap" items-center />
     </div>
     <div title-2 font-500>
       <div ref="$s2" inline />
