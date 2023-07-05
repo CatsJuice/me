@@ -104,7 +104,7 @@ async function typeSentence3() {
       </div>
     </div>
 
-    <div title-1 flex="~ wrap" items-center>
+    <div flex="~ wrap" items-center title-1>
       <div
         mr4
         class="avatar"
@@ -118,7 +118,7 @@ async function typeSentence3() {
       </div>
       <div ref="$s1" inline-flex flex="nowrap" items-center />
     </div>
-    <div title-2 font-500>
+    <div font-500 title-2>
       <div ref="$s2" inline />
     </div>
     <div mt3 class="s3" flex="~" items-center font-400 text-gray-4>
