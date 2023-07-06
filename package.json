@@ -1,5 +1,5 @@
 {
-  "name": "CatsJuice",
+  "name": "@catsjuice/me",
   "private": true,
   "packageManager": "pnpm@8.6.3",
   "scripts": {
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@catsjuice/utils": "^0.1.2",
+    "ipad-cursor": "^0.1.1",
     "typed.js": "^2.0.16"
   }
 }

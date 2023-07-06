@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useCursor } from 'ipad-cursor/vue'
 import { codepen, github, twitter } from '../constants/social'
 
 useCursor()
@@ -40,7 +41,7 @@ const socials = [
         v-for="social in socials"
         :key="social.name"
         p1
-        data-cursor="rect"
+        data-cursor="block"
         :href="social.href"
       >
         <div :class="{ [social.icon]: true }" />

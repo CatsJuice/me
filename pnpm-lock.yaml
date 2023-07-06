@@ -8,6 +8,9 @@ dependencies:
   '@catsjuice/utils':
     specifier: ^0.1.2
     version: 0.1.2
+  ipad-cursor:
+    specifier: ^0.1.1
+    version: registry.npmmirror.com/ipad-cursor@0.1.1
   typed.js:
     specifier: ^2.0.16
     version: registry.npmmirror.com/typed.js@2.0.16
@@ -11966,6 +11969,12 @@ packages:
       has: registry.npmmirror.com/has@1.0.3
       side-channel: registry.npmmirror.com/side-channel@1.0.4
     dev: true
+
+  registry.npmmirror.com/ipad-cursor@0.1.1:
+    resolution: {integrity: sha512-skuAJebv7Qwtgq9IhWt9oGeXRJlKKSrY3Su/A0svwejSqcEoUsner8P0rrBrgJqZUbGp7cC01c3WIrWVfWjeHg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ipad-cursor/-/ipad-cursor-0.1.1.tgz}
+    name: ipad-cursor
+    version: 0.1.1
+    dev: false
 
   registry.npmmirror.com/is-array-buffer@3.0.2:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-array-buffer/-/is-array-buffer-3.0.2.tgz}

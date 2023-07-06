@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { sleep } from '@catsjuice/utils'
 import Typed from 'typed.js'
+import { useCursor } from 'ipad-cursor/vue'
 
 const $s1h = ref<HTMLElement>()
 const $s1 = ref<HTMLElement>()
@@ -9,19 +10,19 @@ const $s2 = ref<HTMLElement>()
 const $s3h = ref<HTMLElement>()
 const $s3 = ref<HTMLElement>()
 
-const { register } = useCursor()
+const { updateCursor } = useCursor()
 
 onMounted(async () => {
   const t1 = await typeSentence1()
-  register()
+  updateCursor()
   t1.cursor.remove()
   await sleep(200)
   const t2 = await typeSentence2()
   t2.cursor.remove()
-  register()
+  updateCursor()
   await sleep(1000)
   await typeSentence3()
-  register()
+  updateCursor()
 })
 
 async function typeSentence1() {
@@ -68,7 +69,7 @@ async function typeSentence3() {
       <div ref="$s1h" hidden>
         <div>
           <span data-cursor="text" inline-block text-nowrap>Hi, ^400I'm</span>
-          <div data-cursor="rect" ml2 inline-block px2 text-nowrap>
+          <div data-cursor="block" ml2 inline-block px2 text-nowrap>
             <span class="catsjuice" inline-block>
               CatsJuice
             </span>
@@ -83,7 +84,7 @@ async function typeSentence3() {
           </span>
 
           <div ml1 inline-block px1 italic>
-            <code data-cursor="rect" inline-block leading-none>
+            <code data-cursor="block" inline-block leading-none data-cursor-style="radius: 6px">
               &#60;developer&nbsp;/&#62;
             </code>
           </div>
@@ -93,7 +94,7 @@ async function typeSentence3() {
       <div ref="$s3h" hidden>
         <div>
           <div flex="~" items-center>
-            <div data-cursor="rect" mr2 inline-block p1>
+            <div data-cursor="block" mr2 inline-block p1>
               <div i-fluent-emoji:face-with-peeking-eye />
             </div>
             <span inline-block data-cursor="text">
@@ -108,7 +109,7 @@ async function typeSentence3() {
       <div
         mr4
         class="avatar"
-        data-cursor="rect"
+        data-cursor="block"
         data-cursor-style="--cursor-radius: 50%;--cursor-scale: 1.1;--cursor-blur-duration: 1.4s"
       >
         <img
