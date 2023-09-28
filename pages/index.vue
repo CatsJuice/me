@@ -2,7 +2,15 @@
 import { useCursor } from 'ipad-cursor/vue'
 import { codepen, github, twitter } from '../constants/social'
 
-useCursor()
+useCursor({
+  normalStyle: {
+    backdropBlur: '20px',
+  },
+  blockStyle: {
+    backdropBlur: '0px',
+    durationBackdropFilter: '1s',
+  },
+})
 
 const socials = [
   {
@@ -11,14 +19,14 @@ const socials = [
     href: github,
   },
   {
-    name: 'Twitter',
-    icon: 'i-mdi:twitter',
-    href: twitter,
-  },
-  {
     name: 'Codepen',
     icon: 'i-mdi:codepen',
     href: codepen,
+  },
+  {
+    name: 'Twitter',
+    href: twitter,
+    textIcon: '𝕏',
   },
 ]
 </script>
@@ -36,15 +44,16 @@ const socials = [
     <br>
     <br>
 
-    <div flex="~" gap-2 text-5>
+    <div flex="~" items-center gap-2 text-5>
       <a
         v-for="social in socials"
         :key="social.name"
-        p1
+        flex="~" h8 w8 items-center justify-center rounded-2.5 p1
         data-cursor="block"
         :href="social.href"
       >
-        <div :class="{ [social.icon]: true }" />
+        <div v-if="social.icon" :class="{ [social.icon]: true }" />
+        <div v-else-if="social.textIcon">{{ social.textIcon }}</div>
       </a>
     </div>
   </div>
