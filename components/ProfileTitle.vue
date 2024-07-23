@@ -7,8 +7,6 @@ const $s1h = ref<HTMLElement>()
 const $s1 = ref<HTMLElement>()
 const $s2h = ref<HTMLElement>()
 const $s2 = ref<HTMLElement>()
-const $s3h = ref<HTMLElement>()
-const $s3 = ref<HTMLElement>()
 
 const { updateCursor } = useCursor()
 
@@ -17,11 +15,7 @@ onMounted(async () => {
   updateCursor()
   t1.cursor.remove()
   await sleep(200)
-  const t2 = await typeSentence2()
-  t2.cursor.remove()
-  updateCursor()
-  await sleep(1000)
-  await typeSentence3()
+  await typeSentence2()
   updateCursor()
 })
 
@@ -49,18 +43,6 @@ async function typeSentence2() {
     })
   })
 }
-
-async function typeSentence3() {
-  return new Promise<Typed>((resolve) => {
-    const _ = new Typed($s3.value, {
-      stringsElement: $s3h.value,
-      typeSpeed: 10,
-      onComplete(self) {
-        resolve(self)
-      },
-    })
-  })
-}
 </script>
 
 <template>
@@ -68,8 +50,8 @@ async function typeSentence3() {
     <div>
       <div ref="$s1h" hidden>
         <div>
-          <span data-cursor="text" inline-block text-nowrap>Hi, ^400I'm</span>
-          <div data-cursor="block" ml2 inline-block px2 text-nowrap>
+          <span v-cursor-text inline-block text-nowrap>Hi, ^400I'm</span>
+          <div v-cursor-block ml2 inline-block px2 text-nowrap>
             <span class="catsjuice" inline-block>
               CatsJuice
             </span>
@@ -79,27 +61,17 @@ async function typeSentence3() {
 
       <div ref="$s2h" hidden>
         <div>
-          <span data-cursor="text" inline-block>
+          <span v-cursor-text inline-block>
             A Node.js ^200 fullstack
           </span>
 
           <div ml1 inline-block px1 italic>
-            <code data-cursor="block" inline-block leading-none data-cursor-style="radius: 6px">
+            <code
+              v-cursor-block="{ radius: '6px' }"
+              inline-block leading-none
+            >
               &#60;developer&nbsp;/&#62;
             </code>
-          </div>
-        </div>
-      </div>
-
-      <div ref="$s3h" hidden>
-        <div>
-          <div flex="~" items-center>
-            <div data-cursor="block" mr2 inline-block p1>
-              <div i-fluent-emoji:face-with-peeking-eye />
-            </div>
-            <span inline-block data-cursor="text">
-              I'm building this site
-            </span>
           </div>
         </div>
       </div>
@@ -107,10 +79,13 @@ async function typeSentence3() {
 
     <div flex="~ wrap" items-center title-1>
       <div
+        v-cursor-block="{
+          '--cursor-radius': '50%',
+          '--cursor-scale': 1.1,
+          '--cursor-blur-duration': '1.4s',
+        }"
         mr4
         class="avatar"
-        data-cursor="block"
-        data-cursor-style="--cursor-radius: 50%;--cursor-scale: 1.1;--cursor-blur-duration: 1.4s"
       >
         <img
           src="/imgs/catsjuice-avatar.jpg"
@@ -121,9 +96,6 @@ async function typeSentence3() {
     </div>
     <div font-500 title-2>
       <div ref="$s2" inline />
-    </div>
-    <div mt3 class="s3" flex="~" items-center font-400 text-gray-4>
-      <div ref="$s3" inline-flex items-center />
     </div>
   </div>
 </template>

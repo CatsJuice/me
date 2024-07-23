@@ -15,7 +15,15 @@ export default defineConfig({
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
     ['title-1', 'text-8 leading-50px sm:text-13 sm:leading-70px font-bold'],
     ['title-2', 'text-5 leading-50px sm:text-6 sm:leading-50px'],
+    ['flex-center', 'flex items-center justify-center'],
   ],
+  theme: {
+    colors: {
+      'border-color-1': 'var(--border-color-1)',
+      'card-bg': 'var(--card-bg)',
+      'npm': 'rgb(186, 38, 26)',
+    },
+  },
   presets: [
     presetUno(),
     presetAttributify(),
