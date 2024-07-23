@@ -38,7 +38,7 @@ html.dark {
   --text: #fff;
   --bg: #222;
   --border-color-1: #cccccc30;
-  --card-bg: #333;
+  --card-bg: #1d1d1e;
 }
 
 html, body , #__nuxt{

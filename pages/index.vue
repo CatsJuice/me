@@ -65,8 +65,8 @@ function _autoScroll() {
 onMounted(() => {
   scrollbar.value.addListener(onScroll)
   window.addEventListener('resize', onResize)
-  onScroll()
   onResize()
+  onScroll()
 })
 onBeforeUnmount(() => {
   scrollbar.value.removeListener(onScroll)
@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div w-full px-lg>
+  <div w-full px-lg :data-scroll-y="scrollY" :data-window-h="windowH">
     <profile-page class="snap" mx-auto h-75vh max-w-840px px5 />
     <project-page
       class="snap"
@@ -85,13 +85,15 @@ onBeforeUnmount(() => {
         transform: `translateY(${projectPageTranslateY}px)`,
       }"
     />
-    <div
-      class="mask" :style="{
-        top: 0,
-        height: '200px',
-        transform: `translate3d(0, ${scrollY + windowH - 200}px, 0)`,
-      }"
-    />
+    <ClientOnly>
+      <div
+        class="mask" :style="{
+          top: 0,
+          height: '200px',
+          transform: `translate3d(0, ${scrollY + windowH - 200}px, 0)`,
+        }"
+      />
+    </ClientOnly>
   </div>
 </template>
 
