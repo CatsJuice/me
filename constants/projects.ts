@@ -19,18 +19,20 @@ export const projects: Project[] = [
     npm: 'https://www.npmjs.com/package/ipad-cursor',
   },
   {
-    id: 1,
-    name: 'Svg Drawing',
-    github: 'https://github.com/CatsJuice/svg-drawing',
-    url: 'https://draw.oooo.so',
-    thumb: dark => dark ? 'svg-drawing.dark.svg' : 'svg-drawing.svg',
+    id: 10,
+    name: 'Clock Clock White',
+    url: 'https://clock.oooo.so',
+    github: 'https://github.com/CatsJuice/clock-clock-white',
+    thumb: dark => dark
+      ? 'clock.dark.gif'
+      : 'clock.light.gif',
   },
   {
     id: 3,
     name: 'Dockbar',
     github: 'https://github.com/catsjuice/dockbar',
     url: 'https://dock.oooo.so',
-    thumb: dark => dark ? 'dockbar.dark.png' : 'dockbar.light.png',
+    thumb: dark => dark ? 'dock.dark.gif' : 'dock.light.gif',
     npm: 'https://www.npmjs.com/package/dockbar',
   },
   {
@@ -41,6 +43,13 @@ export const projects: Project[] = [
     thumb: dark => dark
       ? 'https://contribution.oooo.so/_/CatsJuice?chart=3dbar&gap=0.6&scale=2&animation=wave&animation_duration=4&animation_delay=0.06&animation_amplitude=24&animation_frequency=0.1&animation_wave_center=0_3&format=svg&weeks=30&theme=native&dark=true'
       : 'https://contribution.oooo.so/_/CatsJuice?chart=3dbar&gap=0.6&scale=2&animation=wave&animation_duration=4&animation_delay=0.06&animation_amplitude=24&animation_frequency=0.1&animation_wave_center=0_3&format=svg&weeks=30&theme=native',
+  },
+  {
+    id: 1,
+    name: 'Svg Drawing',
+    github: 'https://github.com/CatsJuice/svg-drawing',
+    url: 'https://draw.oooo.so',
+    thumb: dark => dark ? 'svg-drawing.dark.svg' : 'svg-drawing.svg',
   },
   {
     id: 6,
@@ -69,24 +78,14 @@ export const projects: Project[] = [
     id: 8,
     name: 'Figma Sticky Note',
     url: 'https://codepen.io/catsjuice/full/RwqzGxV',
-    thumb: 'figma-sticker.light.gif',
+    thumb: dark => dark ? 'figma-sticker.dark.gif' : 'figma-sticker.light.gif',
     codepen: 'https://codepen.io/catsjuice/full/RwqzGxV',
   },
   {
     id: 9,
     name: 'CSS Leopold FC750R PD',
     url: 'https://codepen.io/catsjuice/full/RwKBJgN',
-    thumb: 'leopold.light.png',
+    thumb: dark => dark ? 'leopold.dark.png' : 'leopold.light.png',
     codepen: 'https://codepen.io/catsjuice/full/RwKBJgN',
   },
-  {
-    id: 10,
-    name: 'Clock Clock White',
-    url: 'https://clock.oooo.so',
-    github: 'https://github.com/CatsJuice/clock-clock-white',
-    thumb: dark => dark
-      ? 'clock-clock-white.dark.png'
-      : 'clock-clock-white.light.png',
-  },
-
 ]

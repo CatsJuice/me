@@ -77,15 +77,16 @@ onBeforeUnmount(() => {
 <template>
   <div w-full px-lg :data-scroll-y="scrollY" :data-window-h="windowH">
     <profile-page class="snap" mx-auto h-75vh max-w-840px px5 />
-    <project-page
-      class="snap"
-      :class="scrollYPercent > 0.5 ? 'max-w-1320px' : 'max-w-840px'"
-      mx-auto min-h-screen px5 transition-all
-      :style="{
-        transform: `translateY(${projectPageTranslateY}px)`,
-      }"
-    />
     <ClientOnly>
+      <project-page
+        class="snap"
+        :class="scrollYPercent > 0.5 ? 'max-w-1320px' : 'max-w-840px'"
+        mx-auto min-h-screen px5 transition-all
+        :style="{
+          transform: `translateY(${projectPageTranslateY}px)`,
+        }"
+      />
+
       <div
         class="mask" :style="{
           top: 0,

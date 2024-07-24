@@ -4,14 +4,18 @@ import { projects } from '~/constants/projects'
 
 const theme = useColorMode()
 
-const resolvedProjects = computed(() => projects.map((proj) => {
-  return {
-    ...proj,
-    thumb: typeof proj.thumb === 'function'
-      ? proj.thumb(theme.value === 'dark')
-      : proj.thumb,
-  }
-}))
+const resolvedProjects = computed(() => {
+  const isDark = theme.value === 'dark'
+  return projects.map((proj) => {
+    const thumb = typeof proj.thumb === 'function'
+      ? proj.thumb(isDark)
+      : proj.thumb
+    return {
+      ...proj,
+      thumb,
+    }
+  })
+})
 
 function getThumbSrc(url: string) {
   if (url.startsWith('http://') || url.startsWith('https://')) {
@@ -43,28 +47,26 @@ function getThumbSrc(url: string) {
     >
       <MasonryFlowItem
         v-for="(project, index) in resolvedProjects"
-        :key="project.id"
+        :key="`${theme}.${project.id}`"
         :height="240"
         :index="index"
       >
         <div h-full w-full>
           <div
-            bg-card-bg h-200px rounded-2
+            h-200px rounded-2 bg-card-bg
             border="~ 1 solid border-color-1"
             @click="() => openInNewTab(project.url)"
           >
-            <ClientOnly>
-              <img
-                v-if="typeof project.thumb === 'string'"
-                h-full w-full select-none overflow-hidden rounded-2 object-cover
-                draggable="false"
-                :src="getThumbSrc(project.thumb)"
-                :alt="project.name"
-              >
-              <template v-else>
-                {{ project.thumb }}
-              </template>
-            </ClientOnly>
+            <img
+              v-if="typeof project.thumb === 'string'"
+              h-full w-full select-none overflow-hidden rounded-2 object-cover
+              draggable="false"
+              :src="getThumbSrc(project.thumb)"
+              :alt="project.name"
+            >
+            <template v-else>
+              {{ project.thumb }}
+            </template>
           </div>
 
           <div flex="~" h-40px items-center justify-between>
@@ -83,7 +85,7 @@ function getThumbSrc(url: string) {
                 :href="project.npm"
                 target="_blank"
                 rel="noopener noreferrer"
-                hover:color-npm h6 w6 flex-center text-4.5
+                h6 w6 flex-center text-4.5 hover:color-npm
               >
                 <span i-mdi:npm block />
               </a>
