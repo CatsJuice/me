@@ -53,13 +53,13 @@ function getThumbSrc(url: string) {
       >
         <div h-full w-full>
           <div
-            h-200px rounded-2 bg-card-bg
+            h-200px overflow-hidden rounded-2 bg-card-bg
             border="~ 1 solid border-color-1"
             @click="() => openInNewTab(project.url)"
           >
             <img
               v-if="typeof project.thumb === 'string'"
-              h-full w-full select-none overflow-hidden rounded-2 object-cover
+              h-full w-full select-none overflow-hidden object-cover
               draggable="false"
               :src="getThumbSrc(project.thumb)"
               :alt="project.name"

@@ -19,14 +19,14 @@ export const projects: Project[] = [
     npm: 'https://www.npmjs.com/package/ipad-cursor',
   },
   {
-    id: 10,
-    name: 'Clock Clock White',
-    url: 'https://clock.oooo.so',
-    github: 'https://github.com/CatsJuice/clock-clock-white',
-    thumb: dark => dark
-      ? 'clock.dark.gif'
-      : 'clock.light.gif',
+    id: 4,
+    name: 'Masonry Flow',
+    github: 'https://github.com/CatsJuice/masonry-flow',
+    url: 'https://masonry.oooo.so',
+    thumb: dark => dark ? 'masonry.dark.gif' : 'masonry.light.gif',
+    npm: 'https://www.npmjs.com/package/masonry-flow',
   },
+
   {
     id: 3,
     name: 'Dockbar',
@@ -59,12 +59,13 @@ export const projects: Project[] = [
     thumb: dark => dark ? 'noise.dark.png' : 'noise.light.png',
   },
   {
-    id: 4,
-    name: 'Masonry Flow',
-    github: 'https://github.com/CatsJuice/masonry-flow',
-    url: 'https://masonry.oooo.so',
-    thumb: _ => 'masonry-flow.dark.gif',
-    npm: 'https://www.npmjs.com/package/masonry-flow',
+    id: 10,
+    name: 'Clock Clock White',
+    url: 'https://clock.oooo.so',
+    github: 'https://github.com/CatsJuice/clock-clock-white',
+    thumb: dark => dark
+      ? 'clock.dark.gif'
+      : 'clock.light.gif',
   },
   {
     id: 7,
