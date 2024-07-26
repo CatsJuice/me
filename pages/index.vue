@@ -94,6 +94,7 @@ onBeforeUnmount(() => {
           transform: `translate3d(0, ${scrollY + windowH - 200}px, 0)`,
         }"
       />
+      <PeekView />
     </ClientOnly>
   </div>
 </template>

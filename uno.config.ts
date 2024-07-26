@@ -21,6 +21,7 @@ export default defineConfig({
     colors: {
       'border-color-1': 'var(--border-color-1)',
       'card-bg': 'var(--card-bg)',
+      'dialog': 'var(--dialog)',
       'npm': 'rgb(186, 38, 26)',
     },
   },

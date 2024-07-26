@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
   id: number
   name: string
   url: string
@@ -7,6 +7,7 @@ interface Project {
   github?: string
   npm?: string
   codepen?: string
+  background?: string
 }
 
 export const projects: Project[] = [
@@ -50,6 +51,7 @@ export const projects: Project[] = [
     github: 'https://github.com/CatsJuice/svg-drawing',
     url: 'https://draw.oooo.so',
     thumb: dark => dark ? 'svg-drawing.dark.svg' : 'svg-drawing.svg',
+    background: 'white',
   },
   {
     id: 6,

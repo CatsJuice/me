@@ -15,8 +15,8 @@ importers:
         specifier: ^0.5.2
         version: 0.5.2
       masonry-flow:
-        specifier: ^0.1.10
-        version: 0.1.10
+        specifier: ^0.2.2
+        version: 0.2.2
       smooth-scrollbar:
         specifier: ^8.8.4
         version: 8.8.4
@@ -3912,8 +3912,8 @@ packages:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
 
-  masonry-flow@0.1.10:
-    resolution: {integrity: sha512-xVXKu1alp2i+ccXG/AUwziPdm746o317dFpu1dGRjiPvaXK57kEKdAtB+Xo3WBw6gz5OSyHlEBUhiIbfHXCX1g==}
+  masonry-flow@0.2.2:
+    resolution: {integrity: sha512-yszjoNOpqaMucYHuw5ussQatuAZaO0iotmxePpbouTizBAvJnfXahRsFz3souqnJNmPcR82uCYrQtFKi8Xa3IA==}
 
   mdast-util-from-markdown@0.8.5:
     resolution: {integrity: sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ==}
@@ -10082,7 +10082,7 @@ snapshots:
     dependencies:
       semver: 6.3.1
 
-  masonry-flow@0.1.10: {}
+  masonry-flow@0.2.2: {}
 
   mdast-util-from-markdown@0.8.5:
     dependencies:

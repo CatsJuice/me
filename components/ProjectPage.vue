@@ -3,6 +3,18 @@ import { MasonryFlowItem, MasonryFlowRoot } from 'masonry-flow/vue'
 import { projects } from '~/constants/projects'
 
 const theme = useColorMode()
+const { preload, cachedUrls, opened, closePeek } = usePeek()
+const { onKeydown } = useKeyboard()
+
+onKeydown((e) => {
+  if (e.code.toLocaleLowerCase() === 'space') {
+    e.preventDefault()
+    e.stopPropagation()
+    if (opened.value) {
+      closePeek()
+    }
+  }
+})
 
 const resolvedProjects = computed(() => {
   const isDark = theme.value === 'dark'
@@ -17,21 +29,27 @@ const resolvedProjects = computed(() => {
   })
 })
 
-function getThumbSrc(url: string) {
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    return url
+onMounted(() => {
+  let allLoaded = false
+
+  const check = () => {
+    const nextToLoad = projects.find(({ url }) => {
+      return !cachedUrls.value.has(url)
+    })
+    if (!nextToLoad) {
+      allLoaded = true
+    }
+    else {
+      preload(nextToLoad.url)
+    }
   }
-  if (url.startsWith('data:image/')) {
-    return url
-  }
-  if (url.startsWith('projects/')) {
-    return url
-  }
-  if (url.startsWith('/')) {
-    return url
-  }
-  return `projects/${url}`
-}
+
+  const loop = setInterval(() => {
+    check()
+    if (allLoaded)
+      clearInterval(loop)
+  }, 1000)
+})
 </script>
 
 <template>
@@ -51,67 +69,7 @@ function getThumbSrc(url: string) {
         :height="240"
         :index="index"
       >
-        <div h-full w-full>
-          <div
-            h-200px overflow-hidden rounded-2 bg-card-bg
-            border="~ 1 solid border-color-1"
-            @click="() => openInNewTab(project.url)"
-          >
-            <img
-              v-if="typeof project.thumb === 'string'"
-              h-full w-full select-none overflow-hidden object-cover
-              draggable="false"
-              :src="getThumbSrc(project.thumb)"
-              :alt="project.name"
-            >
-            <template v-else>
-              {{ project.thumb }}
-            </template>
-          </div>
-
-          <div flex="~" h-40px items-center justify-between>
-            <h6
-              v-cursor-text="{
-                background: 'currentColor',
-              }"
-              inline-block h-full flex items-center px1 text-3.5 font-500
-            >
-              {{ project.name }}
-            </h6>
-            <div flex="~" gap-1>
-              <a
-                v-if="project.npm"
-                v-cursor-block
-                :href="project.npm"
-                target="_blank"
-                rel="noopener noreferrer"
-                h6 w6 flex-center text-4.5 hover:color-npm
-              >
-                <span i-mdi:npm block />
-              </a>
-              <a
-                v-if="project.codepen"
-                v-cursor-block
-                h6 w6 flex-center text-4.5
-                :href="project.codepen"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span i-mdi:codepen block />
-              </a>
-              <a
-                v-if="project.github"
-                v-cursor-block
-                h6 w6 flex-center text-4.5
-                :href="project.github"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span i-mdi:github block />
-              </a>
-            </div>
-          </div>
-        </div>
+        <ProjectCard :project="project" />
       </MasonryFlowItem>
     </MasonryFlowRoot>
   </div>

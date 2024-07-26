@@ -16,7 +16,7 @@
   "dependencies": {
     "@catsjuice/utils": "^0.1.2",
     "ipad-cursor": "^0.5.2",
-    "masonry-flow": "^0.1.10",
+    "masonry-flow": "^0.2.2",
     "smooth-scrollbar": "^8.8.4",
     "typed.js": "^2.1.0"
   },
