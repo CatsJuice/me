@@ -6,13 +6,13 @@ interface Props {
 }
 const props = defineProps<Props>()
 
-const { onKeydown } = useKeyboard()
+const { listen: listenKeyDown } = useGlobalEvents('keydown')
 const { openPeek, preload } = usePeek()
 const thumbRef = ref<HTMLElement>()
 
 const focused = ref(false)
 
-onKeydown((e) => {
+listenKeyDown((e) => {
   if (e.code.toLocaleLowerCase() === 'space') {
     e.preventDefault()
     e.stopPropagation()

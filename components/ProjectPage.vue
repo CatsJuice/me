@@ -4,7 +4,8 @@ import { projects } from '~/constants/projects'
 
 const theme = useColorMode()
 const { preload, cachedUrls, opened, closePeek } = usePeek()
-const { onKeydown } = useKeyboard()
+const { listen: onKeydown } = useGlobalEvents('keydown')
+const { listen: onMouseMove } = useGlobalEvents('mousemove')
 
 onKeydown((e) => {
   if (e.code.toLocaleLowerCase() === 'space') {
@@ -13,6 +14,11 @@ onKeydown((e) => {
     if (opened.value) {
       closePeek()
     }
+  }
+  if (e.code.toLocaleLowerCase() === 'escape') {
+    e.preventDefault()
+    e.stopPropagation()
+    closePeek()
   }
 })
 
@@ -29,6 +35,11 @@ const resolvedProjects = computed(() => {
   })
 })
 
+const free = ref(false)
+onMouseMove(() => {
+  free.value = false
+  setTimeout(() => free.value = true, 1000)
+})
 onMounted(() => {
   let allLoaded = false
 
@@ -45,6 +56,8 @@ onMounted(() => {
   }
 
   const loop = setInterval(() => {
+    if (!free.value)
+      return
     check()
     if (allLoaded)
       clearInterval(loop)

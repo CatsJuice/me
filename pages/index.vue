@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
       <project-page
         class="snap"
         :class="scrollYPercent > 0.5 ? 'max-w-1320px' : 'max-w-840px'"
-        mx-auto min-h-screen px5 transition-all
+        mx-auto min-h-600px px5 pb20 transition-all
         :style="{
           transform: `translateY(${projectPageTranslateY}px)`,
         }"

@@ -73,7 +73,7 @@ function animateOpen() {
   const fromRect = peek.from.getBoundingClientRect()
   const toRect = peekViewRect.value
 
-  animate(fromRect, toRect, 'in')
+  animate(fromRect, toRect, 'in', 300)
 }
 function animateClose() {
   const peek = animatingPeek.value
@@ -82,13 +82,14 @@ function animateClose() {
 
   const fromRect = peekViewRect.value
   const toRect = peek.from.getBoundingClientRect()
-  animate(fromRect, toRect, 'out')
+  animate(fromRect, toRect, 'out', 150)
 }
 
 function animate(
   from: DOMRect,
   to: DOMRect,
   dir: 'in' | 'out' = 'in',
+  duration = 300,
 ) {
   const clip = peekClipElRef.value
   if (!clip)
@@ -101,7 +102,7 @@ function animate(
     opacity: dir === 'in' ? '0' : '1',
   }
 
-  clip.style.transition = `all 0.3s ease`
+  clip.style.transition = `all ${duration}ms ease`
 
   nextTick(() => {
     requestAnimationFrame(() => {
@@ -110,13 +111,13 @@ function animate(
         height: `${to.height}px`,
         top: `${to.top}px`,
         left: `${to.left}px`,
-        opacity: dir === 'in' ? '1' : '0',
+        opacity: dir === 'in' ? '1' : '0.2',
       }
     })
   })
 
   Promise.race([
-    new Promise(resolve => setTimeout(resolve, 2000)),
+    new Promise(resolve => setTimeout(resolve, duration)),
     new Promise((resolve) => {
       peekClipElRef.value?.addEventListener('transitionend', resolve, { once: true })
     }),
@@ -139,8 +140,9 @@ onBeforeUnmount(() => {
   <Teleport to="body">
     <div
       class="mask"
-      bg-black-10 absolute left-0 top-0 h-full w-full :class="[
-        opened || animatingPeek ? 'block' : 'opacity-0 pointer-events-none',
+      bg-black-10 absolute left-0 top-0 h-full w-full
+      :class="[
+        opened ? 'opened block' : 'opacity-0 pointer-events-none',
       ]"
       @click="activePeek = null"
     >
@@ -148,20 +150,20 @@ onBeforeUnmount(() => {
         ref="peekClipElRef"
         class="clip"
         :style="finalClipStyle"
-        bg-dialog absolute flex-center overflow-hidden @click.stop
+        absolute flex-center overflow-hidden bg-dialog @click.stop
       >
         <iframe
           v-for="url in urlList"
           :key="url"
-          absolute
           :width="`${peekViewRect.width}px`"
           :height="`${peekViewRect.height}px`"
           :src="url"
           :class="[
             url === activePeek?.url || url === animatingPeek?.url
-              ? 'z1 pointer-events-auto opacity-100'
-              : 'z0 pointer-events-none opacity-0',
+              ? 'z1 pointer-events-auto block'
+              : 'z0 pointer-events-none hidden',
           ]"
+          absolute
         />
       </div>
 
@@ -174,7 +176,7 @@ onBeforeUnmount(() => {
       >
         <button
           v-cursor-block
-          bg-dialog rounded-xl px5 py2 class="with-hover"
+          rounded-xl bg-dialog px5 py2 class="with-hover"
         >
           <!-- <div class="" -->
           <span>Open in new tab</span>
@@ -186,8 +188,11 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .mask {
-  transition: all .3s;
+  transition: opacity .3s ease 0.1s;
   background: rgba(0,0,0, 0.3);
+}
+.mask.opened {
+  transition-duration: 0.2s;
 }
 .clip {
   border-radius: 16px;
