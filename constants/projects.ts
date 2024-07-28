@@ -16,7 +16,7 @@ export const projects: Project[] = [
     name: 'iPad Cursor',
     github: 'https://github.com/CatsJuice/ipad-cursor',
     url: 'https://cursor.oooo.so',
-    thumb: 'https://cursor.oooo.so/og-image.jpg',
+    thumb: dark => dark ? 'cursor.dark.gif' : 'cursor.light.gif',
     npm: 'https://www.npmjs.com/package/ipad-cursor',
   },
   {
