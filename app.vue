@@ -17,7 +17,8 @@ useHead({
 :root {
   --text: #333;
   --bg: #f8f7f6;
-  --border-color-1: #ddd;
+  --border-color-1: #ece7e7;
+  --border-color-2: #f1f1f1ad;
   --card-bg: #fcfcfc;
   --dialog: #fff;
   --hover: rgba(0, 0, 0, 0.1);
@@ -25,7 +26,8 @@ useHead({
 html.dark {
   --text: #fff;
   --bg: #222;
-  --border-color-1: #cccccc30;
+  --border-color-1: #cccccc26;
+  --border-color-2: #e9e9e909;
   --card-bg: #1d1d1e;
   --dialog: #333;
   --hover: rgba(255,255, 255, 0.1);

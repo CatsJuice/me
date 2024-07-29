@@ -10,6 +10,15 @@ const $s2 = ref<HTMLElement>()
 
 const { updateCursor } = useCursor()
 
+const gradients = [
+  'linear-gradient(to right, #f83600 0%, #f9d423 100%)',
+  'linear-gradient(to right, #0ba360 0%, #3cba92 100%)',
+  'linear-gradient(to left, #f77062 0%, #fe5196 100%)',
+  'linear-gradient(to right, #00cdac 0%, #8ddad5 100%)',
+  'linear-gradient(to right, #007adf 0%, #00ecbc 100%)',
+]
+const activeGradientIndex = ref(Math.floor(Math.random() * gradients.length))
+
 onMounted(async () => {
   const t1 = await typeSentence1()
   updateCursor()
@@ -46,7 +55,10 @@ async function typeSentence2() {
 </script>
 
 <template>
-  <div class="profile-title" select-none>
+  <div
+    class="profile-title" select-none
+    :style="{ '--gradient': gradients[activeGradientIndex] ?? gradients[0] }"
+  >
     <div>
       <div ref="$s1h" hidden>
         <div>
@@ -125,7 +137,7 @@ async function typeSentence2() {
   transition: all 0.5s;
   z-index: 1;
 
-  background: -webkit-linear-gradient(0deg, #e81e57 0%, #910aff 80%, #af38ff);
+  background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

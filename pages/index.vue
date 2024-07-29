@@ -94,7 +94,7 @@ onBeforeUnmount(() => {
       <project-page
         class="snap"
         :class="scrollYPercent > 0.5 ? 'max-w-1320px' : 'max-w-840px'"
-        mx-auto min-h-600px px5 pb20 transition-all
+        mx-auto min-h-600px px5 pb20
         :style="{
           transform: `translateY(${projectPageTranslateY}px)`,
         }"
@@ -119,6 +119,7 @@ onBeforeUnmount(() => {
 }
 .snap {
   scroll-snap-align: center;
+  transition: all 0.23s ease, transform 0s;
 }
 .mask {
   pointer-events: none;

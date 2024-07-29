@@ -68,12 +68,12 @@ onMounted(() => {
 <template>
   <div w-full pt10>
     <MasonryFlowRoot
-      :transition-duration="500"
+      :transition-duration="400"
       transition-timing="cubic-bezier(.35,.38,.09,.99)"
       w-full
       width="280,400"
-      :gap-x="24"
-      :gap-y="16"
+      :gap-x="32"
+      :gap-y="20"
       :scrollable="false"
     >
       <MasonryFlowItem

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BorderBox } from 'border-box/vue'
 import type { Project } from '~/constants/projects'
 
 interface Props {
@@ -55,19 +56,25 @@ function getThumbSrc(url: string) {
     <div
       ref="thumbRef"
       class="project-thumb"
-      h-200px overflow-hidden rounded-2 bg-card-bg
-      border="~ 1 solid border-color-1"
+      h-200px
     >
-      <img
-        v-if="typeof project.thumb === 'string'"
-        h-full w-full select-none overflow-hidden object-cover
-        draggable="false"
-        :src="getThumbSrc(project.thumb)"
-        :alt="project.name"
+      <BorderBox
+        :border-radius="25" :border-width="1.2" :smooth="0.9"
+        border-color="linear-gradient(135deg, var(--border-color-1), var(--border-color-2), var(--border-color-1))"
       >
-      <template v-else>
-        {{ project.thumb }}
-      </template>
+        <div h-full w-full overflow-hidden bg-card-bg>
+          <img
+            v-if="typeof project.thumb === 'string'"
+            h-full w-full select-none overflow-hidden object-cover
+            draggable="false"
+            :src="getThumbSrc(project.thumb)"
+            :alt="project.name"
+          >
+          <template v-else>
+            {{ project.thumb }}
+          </template>
+        </div>
+      </BorderBox>
     </div>
 
     <div flex="~" h-40px items-center justify-between>
