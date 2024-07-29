@@ -28,7 +28,12 @@ const borderBoxProps = computed(() => ({
   <div h-full w-full flex-center :style="{ background }">
     <div h-full w-full :style="{ maxWidth: `${maxSize}px`, maxHeight: `${maxSize}px` }">
       <BorderBox v-bind="borderBoxProps" class="border-box-root" :class="{ dark: isDark }">
-        <a block h-full w-full cursor-pointer href="https://oooo.so">
+        <a
+          block h-full w-full cursor-pointer
+          href="https://oooo.so"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img class="avatar" h-full w-full src="/imgs/catsjuice-avatar.jpg" draggable="false">
         </a>
         <template #borderMask>
