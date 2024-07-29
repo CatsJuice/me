@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCursor } from 'ipad-cursor/vue'
-import type { Scrollbar } from 'smooth-scrollbar/scrollbar'
+import Scrollbar from 'smooth-scrollbar'
+import { DisableScrollPlugin } from '../utils/scroll-plugins/disable-scroll'
 import { disableScroll, enableScroll } from '~/utils/scroll-plugins/disable-scroll'
 
 useCursor({
@@ -12,9 +13,10 @@ useCursor({
     durationBackdropFilter: '1s',
   },
 })
+const scrollbar: Ref<Scrollbar | null> = ref(null)
+provide('scrollbar', scrollbar)
 
-const scrollbar = inject<Ref<Scrollbar>>('scrollbar')!
-
+const rootRef = ref<HTMLElement | null>(null)
 const scrollY = ref(0)
 const windowH = ref(typeof window === 'undefined' ? 1080 : window.innerHeight)
 const scrollYPercent = computed(() => scrollY.value / windowH.value)
@@ -28,7 +30,7 @@ const projectPageTranslateY = computed(() => {
 function onScroll() {
   const scroll = scrollbar.value
   // _autoScroll()
-  scrollY.value = scroll.offset.y
+  scrollY.value = scroll?.offset?.y ?? 0
 }
 function onResize() {
   windowH.value = window.innerHeight
@@ -36,7 +38,7 @@ function onResize() {
 let prevScrollY = 0
 let autoScrolling = false
 function _autoScroll() {
-  const scroll = scrollbar.value
+  const scroll = scrollbar.value!
   const currScrollY = scroll.offset.y
   const diff = currScrollY - prevScrollY
   prevScrollY = currScrollY
@@ -63,19 +65,30 @@ function _autoScroll() {
   }
 }
 onMounted(() => {
+  Scrollbar.use(DisableScrollPlugin)
+  const el = rootRef.value!
+  scrollbar.value = Scrollbar.init(el, {
+    damping: 0.1,
+  })
+
   scrollbar.value.addListener(onScroll)
   window.addEventListener('resize', onResize)
   onResize()
   onScroll()
 })
 onBeforeUnmount(() => {
-  scrollbar.value.removeListener(onScroll)
+  scrollbar.value?.removeListener(onScroll)
   window.removeEventListener('resize', onResize)
 })
 </script>
 
 <template>
-  <div w-full px-lg :data-scroll-y="scrollY" :data-window-h="windowH">
+  <div
+    ref="rootRef"
+    class="index-page"
+    min-h-screen
+    w-full px-lg :data-scroll-y="scrollY" :data-window-h="windowH"
+  >
     <profile-page class="snap" mx-auto h-75vh max-w-840px px5 />
     <ClientOnly>
       <project-page
@@ -100,6 +113,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.index-page {
+  color: var(--text);
+  background: var(--bg);
+}
 .snap {
   scroll-snap-align: center;
 }

@@ -1,28 +1,14 @@
 <script setup lang="ts">
-import Scrollbar from 'smooth-scrollbar'
-import { DisableScrollPlugin } from './utils/scroll-plugins/disable-scroll'
 import { appName } from '~/constants'
-
-const layoutWrapper = ref<any | null>(null)
-const scrollbar: Ref<Scrollbar | null> = ref(null)
-provide('scrollbar', scrollbar)
 
 useHead({
   title: appName,
-})
-
-onMounted(() => {
-  Scrollbar.use(DisableScrollPlugin)
-  const el = layoutWrapper.value?.$el
-  scrollbar.value = Scrollbar.init(el, {
-    damping: 0.1,
-  })
 })
 </script>
 
 <template>
   <VitePwaManifest />
-  <NuxtLayout id="app-layout" ref="layoutWrapper">
+  <NuxtLayout id="app-layout">
     <NuxtPage />
   </NuxtLayout>
 </template>
@@ -50,10 +36,10 @@ html, body , #__nuxt{
   padding: 0;
 }
 
-html {
+/* html {
   color: var(--text);
   background: var(--bg);
-}
+} */
 
 html, body {
   height: 100vh;
