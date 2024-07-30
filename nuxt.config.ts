@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
   ],
-  pages: true,
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest

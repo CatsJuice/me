@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "/index.html/:path*",
+      "statusCode": 200
+    }
+  ]
+}
