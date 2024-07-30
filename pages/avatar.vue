@@ -4,9 +4,11 @@ import { useCursor } from 'ipad-cursor/vue'
 
 const $route = useRoute()
 
-const isDark = computed(() => !!$route.query.dark)
-const background = computed(() => $route.query.bg?.toString() ?? 'transparent')
-const maxSize = computed(() => $route.query.size || 36)
+const hash = computed(() => $route.hash)
+const hashParams = computed(() => new URLSearchParams(hash.value.slice(1)))
+const isDark = computed(() => hashParams.value.get('dark')?.toLocaleLowerCase() === 'true')
+const background = computed(() => hashParams.value.get('bg') ?? 'transparent')
+const maxSize = computed(() => Number(hashParams.value.get('size')) || 36)
 
 const { disposeCursor } = useCursor()
 
