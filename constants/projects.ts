@@ -91,4 +91,11 @@ export const projects: Project[] = [
     thumb: dark => dark ? 'leopold.dark.png' : 'leopold.light.png',
     codepen: 'https://codepen.io/catsjuice/full/RwKBJgN',
   },
+  {
+    id: 11,
+    name: 'Morph pargraph by chars',
+    url: 'https://html.oooo.so/text-morph/index.html',
+    thumb: dark => dark ? 'text-morph.dark.gif' : 'text-morph.light.gif',
+    codepen: 'https://codepen.io/catsjuice/full/QwbwWqx',
+  },
 ]
