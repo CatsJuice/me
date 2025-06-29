@@ -98,4 +98,11 @@ export const projects: Project[] = [
     thumb: dark => dark ? 'text-morph.dark.gif' : 'text-morph.light.gif',
     codepen: 'https://codepen.io/catsjuice/full/QwbwWqx',
   },
+  {
+    id: 12,
+    name: 'Canvas Calendar',
+    url: 'https://canvas-calendar.oooo.so',
+    thumb: dark => dark ? 'canvas-calendar.dark.gif' : 'canvas-calendar.light.gif',
+    github: 'https://github.com/CatsJuice/canvas-calendar',
+  },
 ]
